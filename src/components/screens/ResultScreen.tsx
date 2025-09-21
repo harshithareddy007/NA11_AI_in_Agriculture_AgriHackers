@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, RotateCcw, Share, Download } from 'lucide-react';
+import { Volume2, RotateCcw, Share, Download, Calendar, ShoppingCart, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ActionButton } from '@/components/ui/button-variants';
@@ -13,12 +13,16 @@ interface ResultScreenProps {
   diagnosis: Diagnosis;
   imageUrl: string;
   onRetake: () => void;
+  onAddToShopping?: (item: { name: string; type: 'organic' | 'chemical' }) => void;
+  onSetReminder?: (treatment: string) => void;
 }
 
 export const ResultScreen: React.FC<ResultScreenProps> = ({ 
   diagnosis, 
   imageUrl, 
-  onRetake 
+  onRetake,
+  onAddToShopping,
+  onSetReminder
 }) => {
   const { language } = useLanguage();
 
@@ -115,6 +119,26 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
             <p className="text-xs text-organic font-medium">
               ✓ {diagnosis.organicSuggestion.safety}
             </p>
+            <div className="flex space-x-2 mt-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onAddToShopping?.({ name: diagnosis.organicSuggestion.name, type: 'organic' })}
+                className="flex-1"
+              >
+                <ShoppingCart className="w-3 h-3 mr-1" />
+                {getTranslation('addToShopping', language)}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onSetReminder?.(diagnosis.organicSuggestion.name)}
+                className="flex-1"
+              >
+                <Calendar className="w-3 h-3 mr-1" />
+                {getTranslation('setReminder', language)}
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
@@ -146,6 +170,26 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
             <p className="text-xs text-chemical font-medium">
               ⚠ {diagnosis.chemicalSuggestion.safety}
             </p>
+            <div className="flex space-x-2 mt-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onAddToShopping?.({ name: diagnosis.chemicalSuggestion.name, type: 'chemical' })}
+                className="flex-1"
+              >
+                <ShoppingCart className="w-3 h-3 mr-1" />
+                {getTranslation('addToShopping', language)}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => onSetReminder?.(diagnosis.chemicalSuggestion.name)}
+                className="flex-1"
+              >
+                <Calendar className="w-3 h-3 mr-1" />
+                {getTranslation('setReminder', language)}
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -153,15 +197,16 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
       {/* Causes */}
       <Card className="rounded-2xl gentle-fade-in">
         <CardHeader className="pb-2">
-          <CardTitle className="text-lg">
+          <CardTitle className="text-lg flex items-center">
+            <AlertCircle className="w-5 h-5 mr-2 text-warning" />
             {getTranslation('causes', language)}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {diagnosis.causes.map((cause, index) => (
-              <li key={index} className="text-sm text-muted-foreground flex items-start">
-                <span className="text-warning mr-2">•</span>
+              <li key={index} className="text-sm text-muted-foreground flex items-start bg-muted/50 p-2 rounded-lg">
+                <span className="text-warning mr-2 font-bold">•</span>
                 {cause}
               </li>
             ))}

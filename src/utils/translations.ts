@@ -2,8 +2,8 @@ import { Translation, Language } from '@/types';
 
 export const translations = {
   welcome: {
-    telugu: 'స్వాగతం — వ్యవసాయ సూచకుడికి',
-    english: 'Welcome — Farmer\'s Crop Doctor'
+    telugu: 'స్వాగతం — AgriVaani వ్యవసాయ సలహాదారు',
+    english: 'Welcome — AgriVaani Crop Doctor'
   },
   languageChoice: {
     telugu: 'భాష ఎంచుకోండి',
@@ -76,6 +76,54 @@ export const translations = {
   analyze: {
     telugu: 'విశ్లేషించండి',
     english: 'Analyze'
+  },
+  scanHistory: {
+    telugu: 'స్కాన్ చరిత్ర',
+    english: 'Scan History'
+  },
+  reminders: {
+    telugu: 'చికిత్స రిమైండర్లు',
+    english: 'Treatment Reminders'
+  },
+  shoppingList: {
+    telugu: 'షాపింగ్ జాబితా',
+    english: 'Shopping List'
+  },
+  chatbot: {
+    telugu: 'సహాయం మరియు FAQ',
+    english: 'Help & FAQ'
+  },
+  addToShopping: {
+    telugu: 'షాపింగ్ లిస్ట్‌కి జోడించు',
+    english: 'Add to Shopping'
+  },
+  setReminder: {
+    telugu: 'రిమైండర్ సెట్ చేయండి',
+    english: 'Set Reminder'
+  },
+  viewHistory: {
+    telugu: 'చరిత్రను చూడండి',
+    english: 'View History'
+  },
+  suppliers: {
+    telugu: 'సప్లైయర్లు',
+    english: 'Suppliers'
+  },
+  purchased: {
+    telugu: 'కొనుగోలు చేసారు',
+    english: 'Purchased'
+  },
+  pending: {
+    telugu: 'పెండింగ్',
+    english: 'Pending'
+  },
+  completed: {
+    telugu: 'పూర్తయింది',
+    english: 'Completed'
+  },
+  settings: {
+    telugu: 'సెట్టింగ్లు',
+    english: 'Settings'
   }
 };
 

@@ -14,7 +14,191 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      faqs: {
+        Row: {
+          answer_en: string
+          answer_te: string
+          category: string
+          created_at: string
+          id: string
+          is_active: boolean
+          question_en: string
+          question_te: string
+        }
+        Insert: {
+          answer_en: string
+          answer_te: string
+          category: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          question_en: string
+          question_te: string
+        }
+        Update: {
+          answer_en?: string
+          answer_te?: string
+          category?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          question_en?: string
+          question_te?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          location: string | null
+          phone_number: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          location?: string | null
+          phone_number?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          location?: string | null
+          phone_number?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      scan_history: {
+        Row: {
+          causes: string[]
+          chemical_suggestion: Json
+          confidence: number
+          created_at: string
+          disease_name: string
+          id: string
+          image_url: string
+          organic_suggestion: Json
+          scan_date: string
+          user_id: string
+        }
+        Insert: {
+          causes: string[]
+          chemical_suggestion: Json
+          confidence: number
+          created_at?: string
+          disease_name: string
+          id?: string
+          image_url: string
+          organic_suggestion: Json
+          scan_date?: string
+          user_id: string
+        }
+        Update: {
+          causes?: string[]
+          chemical_suggestion?: Json
+          confidence?: number
+          created_at?: string
+          disease_name?: string
+          id?: string
+          image_url?: string
+          organic_suggestion?: Json
+          scan_date?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      shopping_lists: {
+        Row: {
+          created_at: string
+          estimated_price: number | null
+          id: string
+          is_purchased: boolean
+          item_name: string
+          item_type: string
+          notes: string | null
+          quantity: string | null
+          supplier_contact: string | null
+          supplier_name: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          estimated_price?: number | null
+          id?: string
+          is_purchased?: boolean
+          item_name: string
+          item_type: string
+          notes?: string | null
+          quantity?: string | null
+          supplier_contact?: string | null
+          supplier_name?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          estimated_price?: number | null
+          id?: string
+          is_purchased?: boolean
+          item_name?: string
+          item_type?: string
+          notes?: string | null
+          quantity?: string | null
+          supplier_contact?: string | null
+          supplier_name?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      treatment_reminders: {
+        Row: {
+          created_at: string
+          id: string
+          is_completed: boolean
+          notes: string | null
+          reminder_date: string
+          scan_id: string | null
+          treatment_name: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          notes?: string | null
+          reminder_date: string
+          scan_id?: string | null
+          treatment_name: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_completed?: boolean
+          notes?: string | null
+          reminder_date?: string
+          scan_id?: string | null
+          treatment_name?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "treatment_reminders_scan_id_fkey"
+            columns: ["scan_id"]
+            isOneToOne: false
+            referencedRelation: "scan_history"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

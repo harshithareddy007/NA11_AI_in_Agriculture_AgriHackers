@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Camera, Image, Settings, MessageCircle } from 'lucide-react';
+import { Camera, Image, Settings, MessageCircle, History, Clock, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CameraButton } from '@/components/ui/button-variants';
 import { Mascot } from '@/components/Mascot';
@@ -11,12 +11,18 @@ interface MainScreenProps {
   onImageCaptured: (image: CropImage) => void;
   onSettingsClick: () => void;
   onChatClick: () => void;
+  onHistoryClick: () => void;
+  onRemindersClick: () => void;
+  onShoppingClick: () => void;
 }
 
 export const MainScreen: React.FC<MainScreenProps> = ({ 
   onImageCaptured, 
   onSettingsClick, 
-  onChatClick 
+  onChatClick,
+  onHistoryClick,
+  onRemindersClick,
+  onShoppingClick
 }) => {
   const { language, setLanguage } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
