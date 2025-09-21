@@ -47,6 +47,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        chemical: {
+          DEFAULT: "hsl(var(--chemical))",
+          foreground: "hsl(var(--chemical-foreground))",
+        },
+        organic: {
+          DEFAULT: "hsl(var(--organic))",
+          foreground: "hsl(var(--organic-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
